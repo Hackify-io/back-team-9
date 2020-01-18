@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.digital_lab.hackify.ad_tech.util.UsernameAuditableProvider;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.softtek.academy.timesheet_tool.repository")
+@EnableJpaRepositories(basePackages = "com.digital_lab.hackify.ad_tech")
 @EnableJpaAuditing(auditorAwareRef = "usernameAuditableProvider")
 public class JpaConfig {
 
