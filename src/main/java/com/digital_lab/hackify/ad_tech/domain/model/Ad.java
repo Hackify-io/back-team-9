@@ -10,6 +10,14 @@ import lombok.Data;
 @Data
 @Entity
 public class Ad {
+
+	public Ad(String description, String imagePath, String url) {
+		super();
+		this.description = description;
+		this.imagePath = imagePath;
+		this.url = url;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
