@@ -25,3 +25,8 @@ def create_ad(app_id: str, app_secret: str, account_access_token: str, account_i
     FacebookAdsApi.init(app_id, app_secret, account_access_token)
     account = AdAccount(account_id)
     return account.create_ad(fields=fields, params=params)
+
+def get_ads(app_id: str, app_secret: str, account_access_token: str, account_id: str):
+    FacebookAdsApi.init(app_id, app_secret, account_access_token)
+    account = AdAccount(account_id)
+    return  account.get_ads()

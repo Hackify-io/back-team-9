@@ -2,7 +2,7 @@ import configparser
 
 from flask import Flask, jsonify, request
 
-from facebook.ad import create_ad, create_creative
+from facebook.ad import create_ad, create_creative, get_ads
 from facebook.ad_set import create_ad_set, get_add_sets
 from facebook.campaigns import create_campaign, get_campaigns
 
@@ -24,7 +24,7 @@ def get_campaigns_api():
     return jsonify([campaign.get_id() for campaign in campaigns])
 
 @app.route("/campaigns", methods=["POST"])
-def add_campaigns():
+def create_campaigns_api():
     fields = []
     params = {
         "name": request.form["name"],
@@ -34,6 +34,16 @@ def add_campaigns():
     }
     campaign = create_campaign(**test_credential, fields=fields, params=params)
     return jsonify({"campaign_id": campaign.get_id()})
+
+@app.route("/ad-sets", methods=["GET"])
+def get_ad_sets_api():
+    ad_sets = get_add_sets(**test_credential)
+    return jsonify([ad_set.get_id() for ad_set in ad_sets])
+
+@app.route("/ads", methods=["GET"])
+def get_ads_api():
+    ads = get_ads(**test_credential)
+    return jsonify([ad.get_id() for ad in ads])
 
 @app.route("/")
 def index():
